@@ -2,17 +2,10 @@
 #ifndef SSD282X_H
 #define SSD282X_H
 
-#include "Header.h"
+#include "cTC358768Setup.h"
 #include <math.h>
 
-class haha {
-public:
-    haha();
-    int xx;
-    int yy;
-};
-
-extern "C" MATHLIBRARY_API class SSD282X : public TC358768Setup
+extern "C" MATHLIBRARY_API class SSD282X : public cTC358768Setup
 {
 public:
     SSD282X();
@@ -33,12 +26,12 @@ public:
     void GenEndOfCode();
     //private:
     u32 bridge_ic;
-    TC358768Setup* toshiba_bridge;
+    cTC358768Setup* toshiba_bridge;
 };
 
 SSD282X::SSD282X(){
     bridge_ic = 0;      //default is 768 AXBG
-    toshiba_bridge = static_cast<TC358768Setup*>(this);
+    toshiba_bridge = static_cast<cTC358768Setup*>(this);
 }
 
 void SSD282X::SetBridgeIC(u32 ic) {

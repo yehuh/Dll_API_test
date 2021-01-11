@@ -91,13 +91,13 @@ private:
     void Set_LONG_ID(void);
 };
 
-extern "C" MATHLIBRARY_API class TC358768Setup {
+extern "C" MATHLIBRARY_API class cTC358768Setup {
 public:
     std::vector<addrdata>   codelist;
     std::vector<packet>     plist;
 
-    TC358768Setup();
-    //    ~TC358768Setup();
+    cTC358768Setup();
+    //    ~cTC358768Setup();
         //  panel
     void SetPanelInfo(u32 H, u32 HFP, u32 HBP, u32 HSW, u32 V, u32 VFP, u32 VBP, u32 VSW, float PCLK);
     void SetVHActive(bool p);

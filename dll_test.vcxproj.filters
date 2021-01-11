@@ -21,10 +21,10 @@
     <ClInclude Include="pch.h">
       <Filter>標頭檔</Filter>
     </ClInclude>
-    <ClInclude Include="Header.h">
+    <ClInclude Include="ssd282x.h">
       <Filter>標頭檔</Filter>
     </ClInclude>
-    <ClInclude Include="ssd282x.h">
+    <ClInclude Include="cTC358768Setup.h">
       <Filter>標頭檔</Filter>
     </ClInclude>
   </ItemGroup>
@@ -35,10 +35,7 @@
     <ClCompile Include="pch.cpp">
       <Filter>來源檔案</Filter>
     </ClCompile>
-    <ClCompile Include="Source.cpp">
-      <Filter>來源檔案</Filter>
-    </ClCompile>
-    <ClCompile Include="ssd282x.cpp">
+    <ClCompile Include="cTC358768Setup.cpp">
       <Filter>來源檔案</Filter>
     </ClCompile>
   </ItemGroup>

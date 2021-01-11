@@ -1,6 +1,6 @@
 // MathLibrary.cpp : Defines the exported functions for the DLL.
 #include "pch.h"// use stdafx.h in Visual Studio 2017 and earlier
-#include "Header.h"
+#include "cTC358768Setup.h"
 #include <math.h>
 //#include <QList>
 
@@ -90,7 +90,7 @@ void packet::Reset() {
     this->delay = 0;
 }
 
-TC358768Setup::TC358768Setup()
+cTC358768Setup::cTC358768Setup()
 {
     //    //  default parameter
     //    packet pp(0x4039,0);
@@ -135,7 +135,7 @@ TC358768Setup::TC358768Setup()
     //    this->plist.push_back(pp3);
 }
 
-void TC358768Setup::GenSoftwareReset() {
+void cTC358768Setup::GenSoftwareReset() {
     addrdata ad;
 
     ad.addr = 0x0002;
@@ -149,7 +149,7 @@ void TC358768Setup::GenSoftwareReset() {
     codelist.push_back(ad);
 }
 
-void TC358768Setup::GenEndOfCode() {
+void cTC358768Setup::GenEndOfCode() {
     addrdata ad;
 
     ad.addr = 0xFFF0;
@@ -160,7 +160,7 @@ void TC358768Setup::GenEndOfCode() {
 //  $$$$ WARNING $$$$
 //  this function will not check errors
 //  it maybe not work if there are errors within generating
-unsigned int TC358768Setup::GenAll() {
+unsigned int cTC358768Setup::GenAll() {
     this->GenSoftwareReset();
     this->GenPLLClkSetting();
     this->GenPhySetting();
@@ -173,7 +173,7 @@ unsigned int TC358768Setup::GenAll() {
     return 0;
 }
 
-void TC358768Setup::SetPanelInfo(u32 H, u32 HFP, u32 HBP, u32 HSW, u32 V, u32 VFP, u32 VBP, u32 VSW, float PCLK) {
+void cTC358768Setup::SetPanelInfo(u32 H, u32 HFP, u32 HBP, u32 HSW, u32 V, u32 VFP, u32 VBP, u32 VSW, float PCLK) {
     h = H;
     hfp = HFP;
     hsw = HSW;
@@ -185,30 +185,30 @@ void TC358768Setup::SetPanelInfo(u32 H, u32 HFP, u32 HBP, u32 HSW, u32 V, u32 VF
     pclk = PCLK;
 }
 
-void TC358768Setup::SetVHActive(bool p) {
+void cTC358768Setup::SetVHActive(bool p) {
     polar = p;
 }
 
-void TC358768Setup::SetPixelFormat(u32 PixSize, u32 PixFormat) {
+void cTC358768Setup::SetPixelFormat(u32 PixSize, u32 PixFormat) {
     pixelsize = PixSize;
     pixformat = PixFormat;
 }
 
-void TC358768Setup::SetMIPI(u32 NumDataLane, float LaneSpeed) {
+void cTC358768Setup::SetMIPI(u32 NumDataLane, float LaneSpeed) {
     numdatalane = NumDataLane;
     desirelaneclk = LaneSpeed;
 }
 
-void TC358768Setup::SetTxMode(u32 TxMode) {
+void cTC358768Setup::SetTxMode(u32 TxMode) {
     txmode = TxMode;
 }
 
-void TC358768Setup::SetClkSorceMHz(float RefClk, u32 SrcSel) {
+void cTC358768Setup::SetClkSorceMHz(float RefClk, u32 SrcSel) {
     refclk = RefClk;
     srcclk = SrcSel;
 }
 
-unsigned int TC358768Setup::GenPLLClkSetting() {
+unsigned int cTC358768Setup::GenPLLClkSetting() {
     double  usedclk;
     double  ftmp, pllratio, diff, bestdiff;
     double  prd_max, prd_min;
@@ -291,7 +291,7 @@ unsigned int TC358768Setup::GenPLLClkSetting() {
     return 0;
 }
 
-unsigned int TC358768Setup::GenPhySetting() {
+unsigned int cTC358768Setup::GenPhySetting() {
     addrdata    ad;
 
     hsbyteclk = reallaneclk / 8;
@@ -363,7 +363,7 @@ unsigned int TC358768Setup::GenPhySetting() {
     return 0;
 }
 
-unsigned int TC358768Setup::GenPPISetting() {
+unsigned int cTC358768Setup::GenPPISetting() {
     addrdata    ad;
     u32			d[12];
     u32			tmptck, tmpths, tmprxgo;
@@ -582,7 +582,7 @@ unsigned int TC358768Setup::GenPPISetting() {
     //    ad.addr = 0;
 }
 
-unsigned int TC358768Setup::GenTxTiming() {
+unsigned int cTC358768Setup::GenTxTiming() {
     u16         d[7];
     u32         i;
     addrdata    ad;
@@ -633,7 +633,7 @@ unsigned int TC358768Setup::GenTxTiming() {
     return 0;
 }
 
-void TC358768Setup::GenSwitchToHS() {
+void cTC358768Setup::GenSwitchToHS() {
     //    u16         d[];
     addrdata    ad;
 
@@ -697,7 +697,7 @@ void TC358768Setup::GenSwitchToHS() {
 
 }
 
-unsigned short TC358768Setup::TransVCOMPacketToCodelist(packet pk, u32 VCOM_byte_loc) {
+unsigned short cTC358768Setup::TransVCOMPacketToCodelist(packet pk, u32 VCOM_byte_loc) {
     u32         i;
     u16         tmp;
     u16         VCOM_adr_cnt = 0, VCOM_adr = 0;
@@ -884,7 +884,7 @@ unsigned short TC358768Setup::TransVCOMPacketToCodelist(packet pk, u32 VCOM_byte
     return VCOM_adr;
 }
 
-void TC358768Setup::TransPacketToCodelist(packet pk) {
+void cTC358768Setup::TransPacketToCodelist(packet pk) {
     u32         i;
     u16         tmp;
     addrdata    ad;
@@ -1055,7 +1055,7 @@ void TC358768Setup::TransPacketToCodelist(packet pk) {
 
 }
 
-void TC358768Setup::GenLPPackets() {
+void cTC358768Setup::GenLPPackets() {
     u32     i;
 
     if (this->plist.size() == 0)
@@ -1070,7 +1070,7 @@ void TC358768Setup::GenLPPackets() {
     }
 }
 
-void TC358768Setup::GenHSPackets() {
+void cTC358768Setup::GenHSPackets() {
     u32        i;
 
     //  no need to rearrange if lazy use...
@@ -1088,7 +1088,7 @@ void TC358768Setup::GenHSPackets() {
     }
 }
 
-void TC358768Setup::RearrangePackets() {
+void cTC358768Setup::RearrangePackets() {
     std::vector<packet>     lplist, hslist;
     u32     i;
 
@@ -1108,7 +1108,7 @@ void TC358768Setup::RearrangePackets() {
     this->plist.insert(this->plist.end(), hslist.begin(), hslist.end());
 }
 
-void TC358768Setup::AddPacket(packet pk) {
+void cTC358768Setup::AddPacket(packet pk) {
     //if(!pk.type_id)     //  delay packet
     //    pk.delay = pk.data.
     this->plist.push_back(pk);
