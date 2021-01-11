@@ -24,6 +24,7 @@
     <ProjectGuid>{e9757df5-1683-4a0f-aa49-009065968309}</ProjectGuid>
     <RootNamespace>dlltest</RootNamespace>
     <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
+    <ProjectName>RA_SoftwareAPI</ProjectName>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
