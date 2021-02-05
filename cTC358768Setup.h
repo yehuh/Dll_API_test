@@ -111,7 +111,7 @@ public:
     //  packets process
     //  add a packet
     void AddPacket(packet pk);
-    void EraseAllPacket();
+    //void EraseAllPacket();
     void RearrangePackets();        //  distinguish LP or HS
     void TransPacketToCodelist(packet pk);
     unsigned short TransVCOMPacketToCodelist(packet pk, u32 VCOM_byte_loc);
@@ -132,9 +132,9 @@ public:
     unsigned int GenAll();
 
     //  quick test used functions
-    void cpt_OTM1283A_packets();
-    void cpt_OTM1283A_packets_back1();
-    void cpt_OTM1283A_packets_back2();
+    //void cpt_OTM1283A_packets();
+    //void cpt_OTM1283A_packets_back1();
+    //void cpt_OTM1283A_packets_back2();
 
     //private:
     u32 h, hfp, hsw, hbp;
